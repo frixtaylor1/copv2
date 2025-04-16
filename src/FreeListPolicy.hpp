@@ -23,7 +23,9 @@ public:
     assert("MUST IMPLEMENT!");
     return nullptr;
   }
-  void free() {}
+  void free(void *ptr) {}
+
+  void setMem(byte *memRef) { arena = memRef; }
 
 private:
   enum { CAPACITY = CAP };

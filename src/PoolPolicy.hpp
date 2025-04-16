@@ -14,7 +14,8 @@ public:
   PoolPolicy(byte *arena) : arena(arena) {}
 
   void *alloc(size_t size) { return nullptr; }
-  void free() {}
+  void free(void *ptr) {}
+  void setMem(byte *memRef) { arena = memRef; }
 
 private:
   byte *arena;

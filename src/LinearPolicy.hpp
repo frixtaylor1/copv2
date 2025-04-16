@@ -2,19 +2,17 @@
 #define LINEARPOLICY_HPP
 
 #include "IAllocatorPolicy.hpp"
-#include <cstddef>
 #include <cassert>
+#include <cstddef>
 
-template <size_t CAPACITY>
-class LinearPolicy : implements IMemPolicy {
+template <size_t CAPACITY> class LinearPolicy : implements IMemPolicy {
 public:
   LinearPolicy() : arena(nullptr), nextPos(0) {}
   LinearPolicy(byte *arena) : arena(arena), nextPos(0) {}
-  ~LinearPolicy() {
-  }
+  ~LinearPolicy() {}
 
-  void setArena(byte *arena) {
-    this->arena = arena;
+  void setMem(byte *memRef) {
+    this->arena = memRef;
     nextPos = 0;
   }
 
@@ -26,9 +24,7 @@ public:
     return ptr;
   }
 
-  void free() {
-    nextPos = 0;
-  }
+  void free(void *ptr) { nextPos = 0; }
 
 private:
   byte *arena;

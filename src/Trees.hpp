@@ -4,6 +4,9 @@
 #include "LinearPolicy.hpp"
 #include <new>
 
+/**
+ * For custom DataTypes must implement operator "<"
+ */
 template <class T, size_t TREE_CAPACITY = 1024> class AVLTree {
   struct TreeNode {
     TreeNode(T value) : data(value), height(1), left(nullptr), right(nullptr) {}
@@ -14,7 +17,7 @@ template <class T, size_t TREE_CAPACITY = 1024> class AVLTree {
   };
 
 public:
-  AVLTree() : root(nullptr) { allocator.setArena(mem); }
+  AVLTree() : root(nullptr) { allocator.setMem(mem); }
 
   ~AVLTree() { ::memset(&mem, 0, TREE_CAPACITY); }
 

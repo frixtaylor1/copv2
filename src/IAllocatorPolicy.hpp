@@ -14,7 +14,8 @@ typedef int Index;
 struct IMemPolicy {
   virtual ~IMemPolicy() {}
   virtual void *alloc(size_t) = 0;
-  virtual void free() = 0;
+  virtual void free(void*) = 0;
+  virtual void setMem(byte *) = 0;
 };
 
 enum MemAllocPolicies {

@@ -17,7 +17,7 @@ public:
   [[nodiscard]] void *alloc(size_t size) {
     return policies[policy]->alloc(size);
   }
-  void free() { return; }
+  void free(void *ptr = nullptr) { policies[policy]->free(ptr); }
 
 private:
   void cleanup() {
@@ -39,6 +39,7 @@ private:
   }
 
   void initialize() {
+    policies[policy]->setMem(arena);
     _dynamicInitialize();
     _staticInitialize();
     ::memset(arena, {0}, CAPACITY);

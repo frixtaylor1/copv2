@@ -47,6 +47,10 @@ public:
     return items[idx];
   }
 
+  ItemType at(size_t idx) const {
+    return items[idx];
+  }
+
   void add(ItemType item) {
     assert(nbItems < CAPACITY && "Capacity exceded.");
     items[nbItems] = item;
@@ -61,7 +65,7 @@ public:
     items[nbItems] = ItemType();
   }
 
-  [[nodiscard]] size_t len() { return nbItems; }
+  [[nodiscard]] size_t len() const { return nbItems; }
 };
 
 #endif // VECTOR_HPP
